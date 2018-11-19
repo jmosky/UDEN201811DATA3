@@ -1,2 +1,2 @@
 # UDEN201811DATA3
-University of Denver Data Bootcamp
+This is a handy place to store and share my homework assignments.
