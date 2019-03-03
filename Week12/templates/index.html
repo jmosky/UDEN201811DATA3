@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="../static/styles/mars.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3 text-center">Mission to Mars</h1>
+      <p class="lead text-center">
+        <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Data</a>
+      </p>
+    </div>
+    <div class="container">
+      <h3 class="font-weight-bold">Latest Mars News</h3>
+      <h5>{{results.news[0].title|safe}}</h5>
+      <p>{{results.news[0].body|safe}}</p>
+      <div class="row">
+        <div class="col-7">
+          <h2>Featured Mars Image</h2>
+          <img src={{results.featured_image|safe}} class="img-fluid" alt="Featured Image">
+        </div>
+        <div class="col-5">
+          <div class="row border border-secondary" id="weather">
+            <h5 class="font-weight-bold">Weather</h5>
+            <p> {{results.weather|safe}} </p>
+          </div>
+          <div class="row" id="table">
+            <h5 class="font-weight-bold" id="key-facts">Key Facts</h5>
+            <p> {{results.facts|safe}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h3 class="font-weight-bold text-center">Hemisphere Images</h3>
+      <div class="row">
+        <div class="col-6">
+          <img src={{results.hemisphere_images[0].img_url|safe}} class="img-fluid img-thumbnail">
+          <h6 class="font-weight-bold text-center">{{results.hemisphere_images[0].title|safe}}</h6>
+        </div>
+        <div class="col-6">
+          <img src={{results.hemisphere_images[1].img_url|safe}} class="img-fluid img-thumbnail">
+          <h6 class="font-weight-bold text-center">{{results.hemisphere_images[1].title|safe}}
+          </h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <img src={{results.hemisphere_images[2].img_url|safe}} class="img-fluid img-thumbnail">
+          <h6 class="font-weight-bold text-center">{{results.hemisphere_images[2].title|safe}}
+          </h6>
+        </div>
+        <div class="col-6">
+          <img src={{results.hemisphere_images[3].img_url|safe}} class="img-fluid img-thumbnail">
+          <h6 class="font-weight-bold text-center">{{results.hemisphere_images[3].title|safe}}
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
