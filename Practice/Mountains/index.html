@@ -49,14 +49,13 @@
 
     let myInput = document.getElementById("MtnHeight")
     myInput.addEventListener("input", function(e) {
-        // console.log(this.value) // this is the object that is bound to the eventListenere
+        console.log(this.value) // this is the object that is bound to the eventListenere
         return renderMountainsTable(this.value)
     })
 
-
     function renderMountainsTable(minMtnHeight) {
 
-        // document.querySelectorAll("table")[0].innerHTML = "";
+        document.getElementById("mountain").innerHTML = "";
 
         const MOUNTAINS = [
             {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
@@ -67,6 +66,10 @@
             {name: "Popocatepetl", height: 5465, place: "Mexico"},
             {name: "Mont Blanc", height: 4808, place: "Italy/France"}
             ];
+        // can also append .filter(x => {
+        //    return x.height > minMtnHeight;
+        //    }
+        //)
 
         let myTable = document.createElement('table');
         let mtnDiv = document.getElementById('mountain');

@@ -1,3 +1,9 @@
+// append is a d3 method
+// appendChild is just a native DOM method
+
+
+
+
 // python list, js array
 // python set, js has nothing like that, underscore.js library
 // python dict, js has an object
@@ -364,4 +370,44 @@ console.log(TallPeaks)
         if(tbl) tbl.parentNode.removeChild(tbl);
     }
   </script>
+</html>
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>This is the title</title>
+</head>
+<body>
+    <h2>All the repos</h2>
+    <input type="text" name="" id="">
+    <!-- // Some one changes the github username
+    // rerender the list items -->
+    <ul id ="repos">
+    </ul>
+    
+<script>
+    // returns a promise in javascript - d3 v5 returns promises for remote resource calls
+    // d3 v4 requires a callback function
+    d3.json('https://api.github.com/users/caspyin/repos').then(function(moose) {
+        //console.log(moose)
+        // moose is an Array
+        moose.map(repo_obj => {
+            console.log(repo_obj)
+            let repoLink = repo_obj.url;
+            d3.select("#repos")
+                .append('li')
+                    .append('a').attr('href', repoLink)
+                        .text(repo_obj.name)
+        })
+        // add to the ul with all the moose.name field values
+    })
+    console.log('moose is coming!')
+</script>
+</body>
 </html>
