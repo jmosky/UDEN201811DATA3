@@ -1,0 +1,132 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+
+//////////////////////////////////////////////////////////////////////
+
+// THIS IS THE VALUABLE EXAMPLE.
+// We have an array, we wanna ad some stuff.
+// Second, create new elements for extra data points
+d3.select("ul")
+    .selectAll("li") // pretty standard. you're not selecting anything. "I wanna build LIs" // if there were any, it would build a reference to them.
+    //items selected above are bound to .data below
+    .data(arr) //...using a dataset
+    .enter() // enter - update - exit pattern in D3.js. Kind of like allocating space from that data into list items that will go into the unordered list.
+    .append("li")
+    //this is property. could be x-coord, y-coord, radius. here we are interested in the text property.
+    .text(function(d) {
+      return d;
+    });
+
+//////////////////////////////////////////////////////////////////////
+
+// select the image gallery
+d3.select(".img-gallery").selectAll("div")
+  // after selecting all divs above (even though they don't exist)
+  // bind data to those divs
+  .data(complexData)
+  .enter() // creates placeholder for new data
+  // for each elemtn in data it will append a div
+  .append("div") // appends a div to placeholder
+  // property allows you to add a class name ot the div created
+  .classed("col-md-4 thumbnail", true) // sets the class of the new div
+  // insert html to those divs
+  .html(function(d, i) { // i is optional and is the index in the data
+    // template literal used
+    return `<img src="${d.url}">`;
+  }); // sets the html in the div to an image tag with the link
+
+//////////////////////////////////////////////////////////////////////
+
+let tbody = d3.select('tbody')
+
+tbody.selectAll("tr")
+  .data(austinWeather)
+  .enter()
+  .append("tr")
+  .html(function(d) {
+    return `<td>${d.date}</td> <td>${d.low}</td> <td>${d.high}</td>`;
+}); 
+
+//////////////////////////////////////////////////////////////////////
+
+<body>
+    <script>
+        var svgContainer = d3.select("body").append("svg")
+            .attr("width", 500)
+            .attr("height", 500);
+        
+        function drawCircle(radius) {
+            svgContainer
+            .append('circle')
+            .attr('cx', 100) // x position of center
+            .attr('cy', 100) // y position of center
+            .attr('r', radius)
+            .attr('fill', 'green')
+            .attr('stroke', 'black')
+
+            drawCircle(radius * .75)
+        }
+
+        drawCircle(100)
+    </script>
+</body>
+
+//////////////////////////////////////////////////////////////////////
+
+setTimeout(function() {
+    // way to delay execution of the function
+}, 1000) // waiting time in milliseconds
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////

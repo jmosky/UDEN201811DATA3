@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var svgContainer = d3.select("body").append("svg")
+            .attr("width", 500)
+            .attr("height", 500);
+            function drawCircle(radius) {
+                svgContainer
+                .append('circle')
+                .attr('cx', 100) // x position of center
+                .attr('cy', 100) // y position of center
+                .attr('r', radius)
+                .attr('fill', 'white')
+                .attr('stroke', 'black')
+            }
+            drawCircle(100)
+    </script>
+</body>
+</html>
