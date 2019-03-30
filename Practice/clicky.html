@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var svgWidth = 960;
+        var svgHeight = 500;
+        // Select body, append SVG area to it, and set its dimensions
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", svgWidth)
+            .attr("height", svgHeight);
+
+        function getCircles() {
+            let circleObjects = [];
+            let circles = Array.from(document.querySelectorAll('circle'))
+            circles.map(circle_obj => {
+                circleObjects.push({
+                    x: circle_obj.cx.baseVal.value,
+                    y: circle_obj.cy.baseVal.value
+                })
+            })
+            return circleObjects
+        }
+
+        d3.select('svg').on('click', function() {
+            console.log('clicked me')
+            svg.append('circle')
+                .attr("cx", d3.event.pageX)
+                .attr("cy", d3.event.pageY)
+                .attr("r", 10)
+
+            let allCircles = getCircles();
+
+            allCircles.map((circ, index) => {
+                if (index < allCircles.length - 1) {
+                    svg.append('line')
+                    .attr("x1", allCircles[index].x)
+                    .attr("y1", allCircles[index].y)
+                    .attr("x2", allCircles[index+1].x)
+                    .attr("y2", allCircles[index+1].y)
+                    .attr('stroke', 'black')
+                }
+
+            })
+
+            // where my circles at???
+            
+    
+
+
+        })
+    </script>
+
+</body>
+
+</html>   
