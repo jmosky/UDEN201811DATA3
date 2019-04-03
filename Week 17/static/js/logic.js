@@ -10,7 +10,7 @@ d3.json(queryUrl, function (data) {
 // Create a function that defines the color of each magnitude.
 // We will use this to create the legend.
 function getColor(d) {
-    return d > 9 ? '#FF2300' :
+    return d > 9 ? '#FF2300' :  // turnery operator 
         d > 8 ? '#FF5700' :
             d > 7 ? '#FF8C00' :
                 d > 6 ? '#FFC100' :
@@ -18,7 +18,7 @@ function getColor(d) {
                         d > 4 ? '#D4FF00' :
                             d > 3 ? '#9FFF00' :
                                 d > 2 ? '#6AFF00' :
-                                    d > 2 ? '#35FF00' :
+                                    d > 1 ? '#35FF00' :
                                         '#00FF00';
 }
 
@@ -41,7 +41,7 @@ function createFeatures(earthquakeData) {
             }).bindPopup("<h3>" + feature.properties.place + "</h3><hr><p>" +
                 "<b> Magnitude: </b>" + feature.properties.mag + "<br><br>" +
                 "<b> Date: </b>" + new Date(feature.properties.time) + "<br><br>" +
-                "<b> # Felt: </b>" + feature.properties.felt + "</p>")
+                "<b> # Felt Reports: </b>" + feature.properties.felt + "</p>")
         }
     });
 
