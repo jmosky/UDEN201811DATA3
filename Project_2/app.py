@@ -16,8 +16,33 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html", results=results)
+Prairie Dogs, Plots, Data
+@app.route("/maps/land_ownership")
+def index():
+    return render_template("land_ownership.html", results=results)
 
-@app.route("/api/")
+
+@app.route("/conservation_areas")
+def index():
+    return render_template("conservation_areas.html", results=results)
+
+@app.route("/maps/trails")
+def index():
+    return render_template("trails.html", results=results)
+
+@app.route("/maps/prairie_dogs")
+def index():
+    return render_template("prairie_dogs.html", results=results)
+
+@app.route("/plots")
+def index():
+    return render_template("plots.html", results=results)
+
+@app.route("/about")
+def index():
+    return render_template("about.html", results=results)
+
+@app.route("/api/p")
 
    return redirect("/",302)
 
