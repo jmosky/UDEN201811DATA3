@@ -16,11 +16,10 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html", results=results)
-Prairie Dogs, Plots, Data
+
 @app.route("/maps/land_ownership")
 def index():
     return render_template("land_ownership.html", results=results)
-
 
 @app.route("/conservation_areas")
 def index():
@@ -43,7 +42,6 @@ def index():
     return render_template("about.html", results=results)
 
 @app.route("/api/p")
-
    return redirect("/",302)
 
 if __name__ == "__main__":
