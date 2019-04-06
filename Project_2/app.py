@@ -1,3 +1,7 @@
+
+#################################################
+# Import Dependencies
+#################################################
 import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta
@@ -9,9 +13,34 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect, text
 
-from flask import Flask, jsonify
+# TUTOR -- Why this over what's above? from flask_sqlalchemy import SQLAlchemy
 
+from flask import (
+    Flask,
+    render_template,
+    jsonify,
+    request,
+    redirect)
+
+# TUTOR -- ditto. from flask import Flask, jsonify
+
+#################################################
+# Flask Setup
+#################################################
 app = Flask(__name__)
+
+#################################################
+# Database Setup
+#################################################
+
+# The database URI
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db/osmp.sqlite"
+
+db = SQLAlchemy(app)
+
+#################################################
+# Set Up Routes
+#################################################
 
 @app.route("/")
 def index():
