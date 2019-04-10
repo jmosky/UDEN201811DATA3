@@ -36,17 +36,18 @@ height: 100%;
 #tweets {
     word-wrap: break-word;
     font-size: .8em;
+    background-color:#c0b3cf;
 }
 
 #page-header {
-  padding-bottom: 9px;
-  margin: 40px 0 20px;
+  padding: 0px 9px 0px 9px;
   border-bottom: 1px solid #eee;
   color:  #eee;
+  background: #6b5d81;
   
 }
-#headerDiv{
-  background: #6b5d81;
-  width:100%;
-}
 
+#plot-container {
+  background-color:#c0b3cf;
+  padding-top: 20px;
+}

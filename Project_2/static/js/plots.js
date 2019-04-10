@@ -8,7 +8,7 @@ d3.json(url).then(function(response) {
   let noPublicAccess = response.filter(data => {
     return data.publicAccess === "n";
   })
-  
+
   var trace1 = {
     x: noPublicAccess.map(data => data.Manager), 
     y: noPublicAccess.map(data => data.sumAcres),
@@ -25,7 +25,37 @@ d3.json(url).then(function(response) {
 
   var data = [trace1, trace2];
 
-  var layout = {barmode: 'stack'};
+  var layout = 
+      // barmode: {'stack'}
+      {
+        title: {
+          text:'OSMP Lands',
+          font: {
+            size: 24
+          },
+          xref: 'paper',
+          xanchor: 'center'
+        },
+        xaxis: {
+          title: {
+            text: 'Land Manager',
+            font: {
+              size: 16,
+              color: '#7f7f7f'
+            }
+          },
+        },
+        yaxis: {
+          title: {
+            text: 'Acres Under Management',
+            font: {
+              size: 16,
+              color: '#7f7f7f'
+            }
+          }
+        }
+      };
+   
 
   Plotly.newPlot('plot', data, layout);
 });

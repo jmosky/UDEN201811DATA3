@@ -13,7 +13,7 @@
 
     <!-- D3 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
-    
+
     <!-- Custom styles for this template -->
     <link href="../static/css/style.css" rel="stylesheet">
 </head>
@@ -44,16 +44,15 @@
             </ul>
         </div>
     </nav>
-    <div class="container" id="plot-container" style="background-color:#c0b3cf;">
-        <div id="headerDiv">
-            <h1 id="page-header">Conservation Areas by the Numbers</h1>
-        </div>
-        <div class="container">
+    <div class="container" id="page-header">         
+        <h1>OSMP by the Numbers</h1>
+    </div>
+    <div class="container" id="plot-container">
             <div class="row">
-                <div class="col-md-8"> 
+                <div class="col-md-8 col-s-6"> 
                     <div id="plot"></div>
                 </div>
-                <div id="tweets" class="col-md-4 hidden-s hidden-cs" style="background-color:#c0b3cf;"> 
+                <div id="tweets" class="col-md-4 hidden-s hidden-cs"> 
                     <h4>Recently on Twitter</h4>
                     <p>{{ tweet1 }}</p>
                     <p>{{ tweet2 }}</p>
@@ -64,7 +63,6 @@
                     <p>{{ tweet7 }}</p>
                 </div>
             </div> 
-        </div>
     </div>
 
     </div>
