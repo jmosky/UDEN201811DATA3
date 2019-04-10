@@ -94,8 +94,14 @@ def about():
 def data_prairie_dogs():
     Session = sessionmaker(bind=engine)
     session = Session()
-    results = session.query(prairie_dog_colonies_data).all()
-    ## data = session.query('name').from_statement('SELECT name from users')
+    stmt = text("select Manager, YearAcquir as yearAcquired,sum(Acres) as sumAcres"
+        " from prairie_dog_colonies"
+        " group by Manager,YearAcquir"
+        " order by Manager,YearAcquir")
+    query = session.query("Manager", "yearAcquired", "sumAcres").from_statement(stmt).all()
+    return json.dumps([ row._asdict() for row in query ])
+    ## query = session.query(prairie_dog_colonies_data).all()
+    ## query = cess.query(Test.my_id, Test.name).order_by(Test.my_id).all()
 
 #   @app.route("/api/p")
 #    return redirect("/",302)
