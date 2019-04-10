@@ -8,6 +8,7 @@ soup = BeautifulSoup(resp.content, "html.parser")
 def find_tweets(tweet_count):
     tweets = []
     for x in range(tweet_count):
-        rating = soup.find("p", attrs={"class": "tweet-text"})
-        rating = rating.get_text()
-        tweets.append(rating)
+        tweet_text = soup.findAll("p", attrs={"class": "tweet-text"})[x]
+        tweet_text = tweet_text.get_text()
+        tweet_text = str(tweet_text.encode("ascii","ignore"))
+        tweets.append(tweet_text)
