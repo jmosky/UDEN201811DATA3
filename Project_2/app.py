@@ -100,11 +100,6 @@ def data_prairie_dogs():
         " order by Manager,YearAcquir")
     query = session.query("Manager", "yearAcquired", "sumAcres").from_statement(stmt).all()
     return json.dumps([ row._asdict() for row in query ])
-    ## query = session.query(prairie_dog_colonies_data).all()
-    ## query = cess.query(Test.my_id, Test.name).order_by(Test.my_id).all()
-
-#   @app.route("/api/p")
-#    return redirect("/",302)
 
 if __name__ == "__main__":
     app.run(debug=True)

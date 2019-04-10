@@ -6,9 +6,11 @@ resp = requests.get(url)
 soup = BeautifulSoup(resp.content, "html.parser")
 
 def find_tweets(tweet_count):
-    tweets = []
+    content = []
     for x in range(tweet_count):
         tweet_text = soup.findAll("p", attrs={"class": "tweet-text"})[x]
         tweet_text = tweet_text.get_text()
         tweet_text = str(tweet_text.encode("ascii","ignore"))
-        tweets.append(tweet_text)
+        temp_dict = {"text": tweet_text}
+        content.append(temp_dict)
+    return content
