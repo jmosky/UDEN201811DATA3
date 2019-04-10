@@ -33,12 +33,20 @@ body::after {
 height: 100%;
 }
 
-.plot-container {
-  background-color: #F8F8F8;
+#tweets {
+    word-wrap: break-word;
+    font-size: .8em;
 }
 
-.page-header {
-padding-bottom: 9px;
-margin: 40px 0 20px;
-border-bottom: 1px solid #eee;
+#page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eee;
+  color:  #eee;
+  
 }
+#headerDiv{
+  background: #6b5d81;
+  width:100%;
+}
+

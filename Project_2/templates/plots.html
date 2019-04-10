@@ -41,21 +41,26 @@
             </ul>
         </div>
     </nav>
-
-    <div class="container" id="plot-container">
-        
-            <h1 id="page-header">Conservation Areas by the Numbers
-            </h1>
-
-        <div class="row">
-            <div class="col-md-9"> 
-            <div id="plot"></div>
-            </div>
-            <div class="col-md-3 hidden-s hidden-xs hidden-m"> 
-            <h4>Recently on Twitter</h4>
-            <p>{{ tweets }}</p>
-            </div>
-
+    <div class="container" id="plot-container" style="background-color:#c0b3cf;">
+        <div id="headerDiv">
+            <h1 id="page-header">Conservation Areas by the Numbers</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8"> 
+                    <div id="plot"></div>
+                </div>
+                <div id="tweets" class="col-md-4 hidden-s hidden-cs" style="background-color:#c0b3cf;"> 
+                    <h4>Recently on Twitter</h4>
+                    <p>{{ tweet1 }}</p>
+                    <p>{{ tweet2 }}</p>
+                    <p>{{ tweet3 }}</p>
+                    <p>{{ tweet4 }}</p>
+                    <p>{{ tweet5 }}</p>
+                    <p>{{ tweet6 }}</p>
+                    <p>{{ tweet7 }}</p>
+                </div>
+            </div> 
         </div>
     </div>
 

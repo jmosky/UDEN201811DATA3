@@ -84,7 +84,9 @@ def maps_prairie_dogs():
 @app.route("/plots")
 def plots():
     tweets = get_tweets.find_tweets(10)
-    return render_template("plots.html", tweets=tweets)
+    return render_template("plots.html", tweet1=tweets[0]['text'], 
+        tweet2=tweets[1]['text'], tweet3=tweets[2]['text'], tweet4=tweets[3]['text'],
+        tweet5=tweets[4]['text'], tweet6=tweets[5]['text'], tweet7=tweets[6]['text']) 
 
 @app.route("/about")
 def about():
@@ -99,6 +101,15 @@ def data_prairie_dogs():
         " group by Manager,YearAcquir"
         " order by Manager,YearAcquir")
     query = session.query("Manager", "yearAcquired", "sumAcres").from_statement(stmt).all()
+    return json.dumps([ row._asdict() for row in query ])
+
+@app.route("/data/osmp_lands")
+def data_osmp_lands():
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    stmt = text("SELECT Manager, PUBLICACCE as publicAccess, sum(Acres) as sumAcres"
+        " FROM osmp_lands GROUP BY manager, PUBLICACCE")
+    query = session.query("Manager", "publicAccess", "sumAcres").from_statement(stmt).all()
     return json.dumps([ row._asdict() for row in query ])
 
 if __name__ == "__main__":
