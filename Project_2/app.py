@@ -8,6 +8,7 @@
 #import datetime as dt
 
 import json
+import os
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -23,7 +24,8 @@ from flask import (
     render_template,
     jsonify,
     request,
-    redirect)
+    redirect,
+    url_for)
 
 import get_tweets
 #################################################
@@ -94,67 +96,7 @@ def about():
     
 @app.route("/data/prairie_dog_colonies")
 def data_prairie_dogs():
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    stmt = text("select YearAcquir as yearAcquired,sum(Acres) as sumAcres,"
-        " CASE"
-        " WHEN name LIKE 'White Rocks%' THEN 'White Rock'"
-        " WHEN name LIKE 'West Rudd%' THEN 'West Rudd'"
-        " WHEN name LIKE 'Yunker%' THEN 'Yunker'"
-        " WHEN name LIKE 'Weiser%' THEN 'Weiser'"
-        " WHEN name LIKE 'Varra%' THEN 'Varra'"
-        " WHEN name LIKE 'Eggleston%' THEN 'Eggleston'"
-        " WHEN name LIKE 'Van Vleet%' THEN 'Van Vleet'"
-        " WHEN name LIKE 'Valmont Butte%' THEN 'Valmont Butte'"
-        " WHEN name LIKE 'Tracy%' THEN 'Tracy Collins'"
-        " WHEN name LIKE 'Teller%' THEN 'Teller Farms'"
-        " WHEN name LIKE 'Superior%' THEN 'Superior Associates'"
-        " WHEN name LIKE '%Stepanek%' THEN 'Stepanek, Canino, Cito'"
-        " WHEN name LIKE '%Canino%' THEN 'Stepanek, Canino, Cito'"
-        " WHEN name LIKE '%Cito%' THEN 'Stepanek, Canino, Cito'"
-        " WHEN name LIKE 'Steele%' THEN 'Steele'"
-        " WHEN name LIKE 'Schneider%' THEN 'Schneider'"
-        " WHEN name LIKE 'Sams Lane%' THEN 'Sams Lane'"
-        " WHEN name LIKE 'Ryan%' THEN 'Ryan'"
-        " WHEN name LIKE 'Nu %' THEN 'NU West'"
-        " WHEN name LIKE 'McKenzie %' THEN 'McKenzie'"
-        " WHEN name LIKE 'Kolb%' THEN 'Kolb'"
-        " WHEN name LIKE 'Klein %' THEN 'Klein'"
-        " WHEN name LIKE 'Abbot%' THEN 'Abbot'"
-        " WHEN name LIKE 'Andrus%' THEN 'Andrus'"
-        " WHEN name LIKE 'Axelson%' THEN 'Axelson'"
-        " WHEN name LIKE 'Blip%' THEN 'Blip'"
-        " WHEN name LIKE 'BVR%' THEN 'BVR 103 Corp'"
-        " WHEN name LIKE 'Belgrove%' THEN 'Belgrove'"
-        " WHEN name LIKE 'Colorado Open%' THEN 'Colorado Open Lands'"
-        " WHEN name LIKE 'Cosslett%' THEN 'Cosslett'"
-        " WHEN name LIKE 'Damyon%' THEN 'Damyanovich'"
-        " WHEN name LIKE 'ERTL%' THEN 'ERTL'"
-        " WHEN name LIKE 'East Park%' THEN 'East Park'"
-        " WHEN name LIKE 'East Beech%' THEN 'East Beech'"
-        " WHEN name LIKE 'East Rudd%' THEN 'East Rudd'"
-        " WHEN name LIKE 'IBM%' THEN 'IBM'"
-        " WHEN name LIKE 'Hogan Brothers%' THEN 'Hogan Brothers'"
-        " WHEN name LIKE 'Jewel%' THEN 'Jewel Mountain'"
-        " WHEN name LIKE 'Joder%' THEN 'Joder'"
-        " WHEN name LIKE 'Johnson/Daw%' THEN 'Johnson/Dawson'"
-        " WHEN name LIKE 'Johnson%' THEN 'Johnson'"
-        " ELSE name END as Name"
-        " from prairie_dog_colonies"
-        " group by Name,YearAcquir"
-        " order by Name,YearAcquir")
-    query = session.query("Name", "yearAcquired", "sumAcres").from_statement(stmt).all()
-    return json.dumps([ row._asdict() for row in query ])
-
-    # x = year acquired
-    # y = sumAcres
-    # other dim (each line in the chart) = Name
-    #
-    # var trace3 = {
-    #     x: [1, 2, 3, 4],
-    #     y: [12, 9, 15, 12],
-    #     mode: 'lines+markers'
-    #     };
+    return  "printed"
 
 @app.route("/data/osmp_lands")
 def data_osmp_lands():
@@ -164,6 +106,21 @@ def data_osmp_lands():
         " FROM osmp_lands GROUP BY manager, PUBLICACCE")
     query = session.query("Manager", "publicAccess", "sumAcres").from_statement(stmt).all()
     return json.dumps([ row._asdict() for row in query ])
+
+# @app.route("/data/prairie_dog_plot")
+# def prairie_dog_plot():
+#     # filename = os.path.join(app.static_folder, 'prairie_dog.json')
+#     # with open(filename) as file:
+#     #     data = json.dumps(file)
+#     # return jsonify(data)
+
+#     urlToVisit = url_for('static', filename='prairie_dog.json')
+#     return redirect(urlToVisit)
+
+@app.route('/data/plot_data')
+def plot_data():
+    urlToVisit = url_for('static', filename='prairie_dog.json')
+    return redirect(urlToVisit)
 
 if __name__ == "__main__":
     app.run(debug=True)

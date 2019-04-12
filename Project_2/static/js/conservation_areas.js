@@ -1,18 +1,28 @@
-// Creating map object
-var map = L.map("map", {
-  center: [40.014984, -105.270546],
-  zoom: 11
-});
-
-// Adding tile layer
-L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+layer1 = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
   maxZoom: 18,
   id: "mapbox.streets",
   accessToken: API_KEY
-}).addTo(map);
+})
 
-var link =  'https://www-static.bouldercolorado.gov/docs/opendata/OSMPManagementAreas.GeoJSON'
+layer2 =   L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+  attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+  maxZoom: 18,
+  id: "mapbox.streets",
+  accessToken: API_KEY
+})
+
+// Creating map object
+var map = L.map("map", {
+  center: [40.014984, -105.270546],
+  zoom: 11,
+  layers:[
+    layer1,
+    layer2
+  ]
+});
+
+var link =  'https://www-static.bouldercolorado.gov/docs/opendata/OSMPManagementAreas.GeoJSON?_ga=2.177582950.2110561214.1553967684-646607836.1553818032'
 
 // Function that will determine the color of a neighborhood based on the borough it belongs to
 function chooseColor(MGMT_AREA) {
@@ -40,12 +50,13 @@ function chooseColor(MGMT_AREA) {
   }
 }
 
-
 $.getJSON({
-  url: "https://cors.io/?https://www-static.bouldercolorado.gov/docs/opendata/OSMPManagementAreas.GeoJSON",
+  url: "https://cors-anywhere.herokuapp.com/https://www-static.bouldercolorado.gov/docs/opendata/OSMPManagementAreas.GeoJSON",
 
   success: function( response ) {
-    // Creating a geoJSON layer with the retrieved data`
+    // i am here
+
+        // Creating a geoJSON layer with the retrieved data
   L.geoJson(response, {
     // Style each feature (in this case a neighborhood)
     style: function(feature) {
