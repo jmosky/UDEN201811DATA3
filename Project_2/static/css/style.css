@@ -50,3 +50,10 @@ height: 100%;
   background-color:#c0b3cf;
   padding-top: 20px;
 }
+
+#button {
+  padding-top: 1px;
+  padding-right: 7px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+}
