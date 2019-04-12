@@ -50,3 +50,11 @@ height: 100%;
   background-color:#c0b3cf;
   padding-top: 20px;
 }
+
+#plot-switcher {
+  padding-bottom: 15px;
+}
+
+#button-option {
+  display: inline;
+}

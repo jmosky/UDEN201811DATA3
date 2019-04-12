@@ -85,10 +85,33 @@ def maps_prairie_dogs():
 
 @app.route("/plots")
 def plots():
-    tweets = get_tweets.find_tweets(10)
-    return render_template("plots.html", tweet1=tweets[0]['text'], 
-        tweet2=tweets[1]['text'], tweet3=tweets[2]['text'], tweet4=tweets[3]['text'],
-        tweet5=tweets[4]['text'], tweet6=tweets[5]['text'], tweet7=tweets[6]['text']) 
+    tweets = get_tweets.find_tweets(12)
+    return render_template("plots.html", 
+        tweet1=tweets[0]['text'], 
+        tweet2=tweets[1]['text'], 
+        tweet3=tweets[2]['text'], 
+        tweet4=tweets[3]['text'],
+        tweet5=tweets[4]['text'], 
+        tweet6=tweets[5]['text'], 
+        tweet7=tweets[6]['text'],
+        tweet8=tweets[7]['text'],
+        tweet9=tweets[8]['text'], 
+        tweet10=tweets[9]['text'], 
+        tweet11=tweets[10]['text'], 
+        tweet12=tweets[11]['text'],
+        
+        url_tweet1=tweets[0]['url'], 
+        url_tweet2=tweets[1]['url'], 
+        url_tweet3=tweets[2]['url'], 
+        url_tweet4=tweets[3]['url'],
+        url_tweet5=tweets[4]['url'], 
+        url_tweet6=tweets[5]['url'], 
+        url_tweet7=tweets[6]['url'],
+        url_tweet8=tweets[7]['url'],
+        url_tweet9=tweets[8]['url'], 
+        url_tweet10=tweets[9]['url'], 
+        url_tweet11=tweets[10]['url'], 
+        url_tweet12=tweets[11]['url']) 
 
 @app.route("/about")
 def about():

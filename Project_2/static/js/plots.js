@@ -93,7 +93,7 @@ function osmpLands() {
 }
 
 function prairieDogs() {
-  var url = "http://127.0.0.1:5000/data/prairie_dog_plot
+  var url = "http://127.0.0.1:5000/data/plot_data"
 
   d3.json(url).then(function(response) {
 

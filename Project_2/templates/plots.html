@@ -18,9 +18,9 @@
     <link href="../static/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="osmpLands()">
     <nav class="navbar navbar-expand-sm navbar-dark mb-5 pt-0 pb-0" style="background-color:#c0b3cf;">
-        <a class="navbar-brand ml-5 pr-2 pl-2 pt-2 pb-2" href="#" style="background-color: #6b5d81">Boulder Open Space
+        <a class="navbar-brand ml-5 pr-2 pl-2 pt-2 pb-2" style="background-color: #6b5d81" href="/">Boulder Open Space
             and Mountain Parks</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
             aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
@@ -38,8 +38,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/plots">Plots</a>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>
         </div>
@@ -49,10 +47,9 @@
     </div>
     <div class="container" id="plot-container">
             <div class="row">
-                <div class="col-md-8"> 
+                <div class="col-md-8" id="plot-switcher">
                     <button id="button" type="button" onclick="osmpLands()">OSMP Lands</button>
                     <button id="button" type="button" onclick="prairieDogs()">Prairie Dog Colonies</button>
-                    <button id="button" type="button">Trails</button>
                 </div>
                 <div class="col-md-4 hidden-s hidden-cs">
                 </div>
@@ -63,13 +60,18 @@
                 </div>
                 <div id="tweets" class="col-md-4 hidden-s hidden-cs"> 
                     <h4>Recently on Twitter</h4>
-                    <p>{{ tweet1 }}</p>
-                    <p>{{ tweet2 }}</p>
-                    <p>{{ tweet3 }}</p>
-                    <p>{{ tweet4 }}</p>
-                    <p>{{ tweet5 }}</p>
-                    <p>{{ tweet6 }}</p>
-                    <p>{{ tweet7 }}</p>
+                    <p>{{ tweet1 }} <a href={{ url_tweet1 }}>See Tweet.</a></p>
+                    <p>{{ tweet2 }} <a href={{ url_tweet2 }}>See Tweet.</a></p>
+                    <p>{{ tweet3 }} <a href={{ url_tweet3 }}>See Tweet.</a></p>
+                    <p>{{ tweet4 }} <a href={{ url_tweet4 }}>See Tweet.</a></p>
+                    <p>{{ tweet5 }} <a href={{ url_tweet5 }}>See Tweet.</a></p>
+                    <p>{{ tweet6 }} <a href={{ url_tweet6 }}>See Tweet.</a></p>
+                    <p>{{ tweet7 }} <a href={{ url_tweet7 }}>See Tweet.</a></p>
+                    <p>{{ tweet8 }} <a href={{ url_tweet8 }}>See Tweet.</a></p>
+                    <p>{{ tweet9 }} <a href={{ url_tweet9 }}>See Tweet.</a></p>
+                    <p>{{ tweet10 }} <a href={{ url_tweet10 }}>See Tweet.</a></p>
+                    <p>{{ tweet11 }} <a href={{ url_tweet11 }}>See Tweet.</a></p>
+                    <p>{{ tweet12 }} <a href={{ url_tweet12 }}>See Tweet.</a></p>
                 </div>
             </div> 
     </div>
