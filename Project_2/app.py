@@ -2,10 +2,6 @@
 #################################################
 # Import Dependencies
 #################################################
-#import numpy as np
-#import pandas as pd
-#from datetime import datetime, timedelta
-#import datetime as dt
 
 import json
 import os
@@ -113,14 +109,6 @@ def plots():
         url_tweet11=tweets[10]['url'], 
         url_tweet12=tweets[11]['url']) 
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
-    
-@app.route("/data/prairie_dog_colonies")
-def data_prairie_dogs():
-    return  "printed"
-
 @app.route("/data/osmp_lands")
 def data_osmp_lands():
     Session = sessionmaker(bind=engine)
@@ -129,16 +117,6 @@ def data_osmp_lands():
         " FROM osmp_lands GROUP BY manager, PUBLICACCE")
     query = session.query("Manager", "publicAccess", "sumAcres").from_statement(stmt).all()
     return json.dumps([ row._asdict() for row in query ])
-
-# @app.route("/data/prairie_dog_plot")
-# def prairie_dog_plot():
-#     # filename = os.path.join(app.static_folder, 'prairie_dog.json')
-#     # with open(filename) as file:
-#     #     data = json.dumps(file)
-#     # return jsonify(data)
-
-#     urlToVisit = url_for('static', filename='prairie_dog.json')
-#     return redirect(urlToVisit)
 
 @app.route('/data/plot_data')
 def plot_data():
